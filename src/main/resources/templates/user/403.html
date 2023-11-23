@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>403 - Access Denied</title>
+    <th:block th:replace="~{layoutUser :: header-link}"></th:block>
+</head>
+<body>
+<th:block th:replace="~{layoutUser :: my-topper}"></th:block>
+<th:block th:replace="~{layoutUser :: my-navbar}"></th:block>
+<!-- END nav -->
+
+<section class="hero-wrap hero-wrap-2" style="background-image: url(/assets/user/images/bg_3.jpg);"
+         data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-end justify-content-center">
+            <div class="col-md-9 ftco-animate text-center mb-4">
+                <h1 class="mb-2 bread">There was an error</h1>
+                <p class="breadcrumbs"><span class="mr-2"><i
+                        ></i></a></span> <span>!!! Access Forbidden !!!<i
+                        ></i></span></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section style="height: 300px" >
+<!--    <div class="container">-->
+<!--            <div class="col-md-6 pt-5 px-2 pb-2 p-md-5 order-md-last">-->
+<!--                <h2 class="h4 mb-2 mb-md-5 font-weight-bold text-center">This error occurs when the server understands the request,-->
+<!--                    but you don't have the necessary permissions to access the requested resource (Error 403).</h2>-->
+<!--            </div>-->
+
+<!--    </div>-->
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <h2 class="font-weight-bold text-center" style="padding-top: 70px">This error occurs when the server understands the request,
+                but you don't have the necessary permissions to access the requested resource (Error 403).</h2>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</section>
+
+<th:block th:replace="~{layoutUser :: my-footer}"></th:block>
+
+
+<!-- loader -->
+<th:block th:replace="~{layoutUser :: my-loader}"></th:block>
+
+
+<th:block th:replace="~{layoutUser :: my-script}"></th:block>
+
+</body>
+</html>
