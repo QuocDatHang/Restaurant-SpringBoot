@@ -92,16 +92,16 @@
 
 <th:block th:fragment="my-cart">
     <div class="modal fade" id="cartModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Cart</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="col-lg-12 px-1 py-1">
 
-                        <h3 class="mb-5 pt-2 text-center fw-bold text-uppercase">Your products</h3>
+                        <h3 class="mb-5 pt-2 text-center fw-bold text-uppercase">Your Foods</h3>
 
                         <div class="d-flex align-items-center mb-5">
                             <div class="flex-shrink-0">
@@ -597,6 +597,7 @@
     </div>
 </th:block>
 <th:block th:fragment="my-script">
+    <script src="/assets/user/cart/myjs/add-cart.js"></script>
     <script src="/assets/user/js/jquery.min.js"></script>
     <script src="/assets/user/js/jquery-migrate-3.0.1.min.js"></script>
     <script src="/assets/user/js/popper.min.js"></script>

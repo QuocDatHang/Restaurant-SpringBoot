@@ -69,7 +69,7 @@
                                                     <span class="price" th:text="${breakfastFood.price.intValue()} + ' VNĐ'"></span>
                                                 </div>
                                                 <p th:text="${breakfastFood.description}"></p>
-                                                <p><a href="#" class="btn btn-primary">Order now</a></p>
+                                                <p><button class="btn btn-primary add-cart" th:value="${breakfastFood.id}">Order now</button></p>
                                             </div>
                                         </div>
 
@@ -95,7 +95,7 @@
                                                     <span class="price" th:text="${lunchFood.price.intValue()} + ' VNĐ'"></span>
                                                 </div>
                                                 <p th:text="${lunchFood.description}"></p>
-                                                <p><a href="#" class="btn btn-primary">Order now</a></p>
+                                                <p><button class="btn btn-primary add-cart" th:value="${lunchFood.id}">Order now</button></p>
                                             </div>
                                         </div>
                                     </div>
@@ -119,7 +119,7 @@
                                                     <span class="price" th:text="${dinnerFood.price.intValue()} + ' VNĐ'"></span>
                                                 </div>
                                                 <p th:text="${dinnerFood.description}"></p>
-                                                <p><a href="#" class="btn btn-primary">Order now</a></p>
+                                                <p><button class="btn btn-primary add-cart" th:value="${dinnerFood.id}">Order now</button></p>
                                             </div>
                                         </div>
                                     </div>
@@ -143,7 +143,7 @@
                                                     <span class="price" th:text="${drinks.price.intValue()} + ' VNĐ'"></span>
                                                 </div>
                                                 <p th:text="${drinks.description}"></p>
-                                                <p><a href="#" class="btn btn-primary">Order now</a></p>
+                                                <p><button class="btn btn-primary add-cart" th:value="${drinks.id}">Order now</button></p>
                                             </div>
                                         </div>
                                     </div>
