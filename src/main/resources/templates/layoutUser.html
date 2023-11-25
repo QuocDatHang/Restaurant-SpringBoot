@@ -79,7 +79,7 @@
                     <li class="nav-item"><a href="/register" class="nav-link" id="menu-register">Register</a></li>
                     <li class="nav-item" id="contact">
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                data-bs-target="#cartModal">
+                                data-bs-target="#cartModal" id="btnShowCart">
                             Cart
                         </button>
                     </li>
@@ -103,28 +103,29 @@
 
                         <h3 class="mb-5 pt-2 text-center fw-bold text-uppercase">Your Foods</h3>
 
-                        <div class="d-flex align-items-center mb-5">
-                            <div class="flex-shrink-0">
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/13.webp"
-                                     class="img-fluid" style="width: 150px;" alt="Generic placeholder image">
-                            </div>
-                            <div class="flex-grow-1 ms-3">
-                                <a href="#!" class="float-end text-black"><i class="fas fa-times"></i></a>
-                                <h5 class="text-primary">Samsung Galaxy M11 64GB</h5>
-                                <h6 style="color: #9e9e9e;">Color: white</h6>
-                                <div class="d-flex align-items-center">
-                                    <p class="fw-bold mb-0 me-5 pe-3">799$</p>
-                                    <div class="def-number-input number-input safari_only">
-                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
-                                                class="minus"></button>
-                                        <input class="quantity fw-bold text-black" min="0" name="quantity" value="1"
-                                               type="number">
-                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
-                                                class="plus"></button>
-                                    </div>
-                                </div>
-                            </div>
+<!--=======================================================CART ITEM=============================================================-->
+                        <div class="d-flex align-items-center mb-5" id="cart-view-line">
+<!--                            <div class="flex-shrink-0">-->
+<!--                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/13.webp"-->
+<!--                                     class="img-fluid" style="width: 150px;" alt="Generic placeholder image">-->
+<!--                            </div>-->
+<!--                            <div class="flex-grow-1 ms-3">-->
+<!--                                <a href="#!" class="float-end text-black"><i class="fas fa-times"></i></a>-->
+<!--                                <h5 class="text-primary">Samsung Galaxy M11 64GB</h5>-->
+<!--                                <h6 style="color: #9e9e9e;">Color: white</h6>-->
+<!--                                <div class="d-flex align-items-center">-->
+<!--                                    <p class="fw-bold mb-0 me-5 pe-3">799$</p>-->
+<!--                                    <div class="def-number-input number-input safari_only">-->
+<!--                                        <button class="minus" data-id="${item.productId}">-</button>-->
+<!--                                        <input class="quantity fw-bold text-black" min="0" name="quantity" value="1"-->
+<!--                                               data-id="${item.productId}" type="number">-->
+<!--                                        <button class="plus" data-id="${item.productId}">+</button>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
                         </div>
+<!--=======================================================CART ITEM=============================================================-->
+
 
                         <hr class="mb-4" style="height: 2px; background-color: #1266f1; opacity: 1;">
 

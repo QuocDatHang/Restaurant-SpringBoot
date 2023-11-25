@@ -24,7 +24,7 @@ public class AuthRestController {
     private final UserService userService;
 
     @GetMapping
-    public ResponseEntity<CustomerResponse> checkAuthentication(HttpServletRequest request) {
+    public ResponseEntity<CustomerResponse> checkAuthentication() {
         // Check if the user is authenticated
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && authentication.isAuthenticated()) {
