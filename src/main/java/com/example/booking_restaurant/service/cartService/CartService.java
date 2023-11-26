@@ -11,6 +11,7 @@ import com.example.booking_restaurant.repository.FoodRepository;
 import com.example.booking_restaurant.service.cartService.request.CartRequest;
 import com.example.booking_restaurant.service.customerService.CustomerService;
 import jakarta.transaction.Transactional;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,8 +21,8 @@ import java.util.Optional;
 
 @Transactional
 @Service
+@AllArgsConstructor
 public class CartService {
-    @Autowired
     private CartRepository cartRepository;
     private CartDetailRepository cartDetailRepository;
     private CustomerService customerService;

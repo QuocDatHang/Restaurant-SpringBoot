@@ -40,6 +40,11 @@ window.onload = async () => {
 
     await handleLogBtn();
     showMsg();
+
+    console.log("hi")
+    handleShowCart();
+
+    handleAddCart();
 }
 
 async function handleLogBtn() {

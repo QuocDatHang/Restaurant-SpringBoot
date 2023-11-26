@@ -1,9 +1,6 @@
 package com.example.booking_restaurant.repository;
 
-import com.example.booking_restaurant.domain.Cart;
-import com.example.booking_restaurant.domain.CartDetail;
-import com.example.booking_restaurant.domain.Customer;
-import com.example.booking_restaurant.domain.Food;
+import com.example.booking_restaurant.domain.*;
 import com.example.booking_restaurant.service.cartDetailService.response.CartDetailResponse;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -27,19 +24,18 @@ public interface CartDetailRepository extends JpaRepository<CartDetail, Long> {
             "ON cd.cart = cart " +
             "AND cd.cart = :cart " +
             "AND cd.cart.customer = :customer"
-    )
+            )
     List<CartDetail> findAllByCartAndCustomer(@Param("cart") Cart cart, @Param("customer") Customer customer);
 
     @Query("SELECT NEW com.example.booking_restaurant.service.cartDetailService.response.CartDetailResponse (" +
             "cd.id, " +
             "cd.food.id, " +
             "cd.food.foodName, " +
-            "cd.food.images, " +
             "cd.price, " +
             "cd.quantity, " +
             "cd.amount" +
             ") FROM CartDetail AS cd " +
             "WHERE cd.cart = :cart"
-    )
-    List<CartDetailResponse> findAllCartItemResDTOByCart(@Param("cart") Cart cart);
+            )
+    List<CartDetailResponse> findAllCartDetailResponseByCart(@Param("cart") Cart cart);
 }

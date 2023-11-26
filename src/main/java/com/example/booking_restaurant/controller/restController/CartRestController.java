@@ -40,7 +40,7 @@ public class CartRestController {
 
         List<CartDetail> cartDetailList = cartDetailService.findAllByCartAndCustomer(cartOptional.get(), customer);
 
-        List<CartDetailResponse> cartDetailResponses = cartDetailService.findAllCartItemResDTOByCart(cartOptional.get());
+        List<CartDetailResponse> cartDetailResponses = cartDetailService.findAllCartDetailResponsesByCart(cartOptional.get());
 
         if (cartDetailList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -53,7 +53,7 @@ public class CartRestController {
         return new ResponseEntity<>(cartResponse, HttpStatus.OK);
     }
 
-    @GetMapping("add-to-cart")
+    @PostMapping("add-to-cart")
     public ResponseEntity<?> addToCart(@RequestBody CartRequest cartRequest) {
         String email = AppUtil.getPrincipalUsername();
         cartService.addToCart(cartRequest, email);

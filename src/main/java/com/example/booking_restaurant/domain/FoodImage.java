@@ -1,5 +1,6 @@
 package com.example.booking_restaurant.domain;
 
+import com.example.booking_restaurant.service.foodImageService.response.FoodImageResponse;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -33,4 +34,15 @@ public class FoodImage {
     @ManyToOne
     @JsonIgnore
     private Food food;
+
+    public FoodImageResponse toFoodImageResponse() {
+        return new FoodImageResponse()
+                .setId(id)
+                .setFileName(fileName)
+                .setFileFolder(fileFolder)
+                .setFileUrl(fileUrl)
+                .setFileType(fileType)
+                .setCloudId(cloudId)
+                ;
+    }
 }

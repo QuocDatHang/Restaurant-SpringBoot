@@ -21,7 +21,8 @@ public class CartDetailService {
     public List<CartDetail> findAllByCartAndCustomer(Cart cart, Customer customer) {
         return cartDetailRepository.findAllByCartAndCustomer(cart, customer);
     }
-    public List<CartDetailResponse> findAllCartItemResDTOByCart(Cart cart) {
-        return cartDetailRepository.findAllCartItemResDTOByCart(cart);
+    public List<CartDetailResponse> findAllCartDetailResponsesByCart(Cart cart) {
+        List<CartDetailResponse> cartDetailResponses = cartDetailRepository.findAllCartDetailResponseByCart(cart);
+        return cartDetailResponses;
     }
 }

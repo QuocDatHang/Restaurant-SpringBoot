@@ -1,5 +1,5 @@
 const makeReservationButton = document.getElementById("booking-btn");
-const eDoneBtn = document.getElementById("done-btn");
+// const eDoneBtn = document.getElementById("done-btn");
 const eConfirm_body = document.getElementById("confirm-body");
 
 let data = {};
@@ -176,9 +176,9 @@ async function checkVipTable() {
 }
 
 
-eDoneBtn.onclick = async () => {
-    await createBill(data);
-}
+// eDoneBtn.on('click', async () => {
+//     await createBill(data);
+// })
 
 
 // Format display time

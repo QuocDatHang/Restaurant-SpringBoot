@@ -1,13 +1,8 @@
 function renderCartItem(item) {
     return `
-            <div class="flex-shrink-0">
-                <img src="${item.images.fileUrl}"
-                     class="img-fluid" style="width: 150px;" alt="Generic placeholder image">
-            </div>
             <div class="flex-grow-1 ms-3">
                 <a href="#!" class="float-end text-black"><i class="fas fa-times"></i></a>
                 <h5 class="text-primary">${item.foodName}</h5>
-                <h6 style="color: #9e9e9e;">Color: white</h6>
                 <div class="d-flex align-items-center">
                     <p class="fw-bold mb-0 me-5 pe-3">${item.price}</p>
                     <div class="def-number-input number-input safari_only">
@@ -20,9 +15,13 @@ function renderCartItem(item) {
             </div>
     `
 }
+// <div class="flex-shrink-0" th:each="img : ${item.images}">
+//     <img src="${img.fileUrl}"
+//          class="img-fluid" style="width: 150px;" alt="Generic placeholder image">
+// </div>
 
-getAllCartItems = () => {
-    return $.ajax({
+getAllCartItems = async () => {
+    return await $.ajax({
         type: 'GET',
         url: "http://localhost:8080/api/carts"
     })
@@ -35,6 +34,7 @@ getAllCartItems = () => {
 
 handleShowCart = () => {
     $("#btnShowCart").on('click', () => {
+        console.log('hi')
         getAllCartItems().then((data) => {
             let items = data.cartDetailList;
             console.log("hi")
@@ -47,12 +47,24 @@ handleShowCart = () => {
 
             $('#total-view-cart').text(data.totalAmount + ' đ');
 
-            handleAddQuantity();
-
-            handleMinusQuantity();
-
-            handleChangeQuantity();
+            // handleAddQuantity();
+            //
+            // handleMinusQuantity();
+            //
+            // handleChangeQuantity();
         });
+    })
+}
+
+addCartItem = (obj) => {
+    return $.ajax({
+        type: 'POST',
+        headers: {
+            'accept': 'application/json',
+            'content-type': 'application/json'
+        },
+        url: "http://localhost:8080/api/carts/add-to-cart",
+        data: JSON.stringify(obj)
     })
 }
 
@@ -64,29 +76,29 @@ handleAddQuantity = () => {
             quantity: 1
         }
 
-        page.commands.addCartItem(obj)
+        addCartItem(obj)
             .then((data) => {
                 let items = data.items;
 
                 $('#cart-view-line').empty();
 
                 $.each(items, (index, item) => {
-                    let str = AppBase.renderCartItem(item);
+                    let str = renderCartItem(item);
                     $('#cart-view-line').append(str);
                 })
 
                 $('#total-view-cart').text(data.totalAmount + ' đ');
 
-                page.commands.handleAddQuantity();
+                handleAddQuantity();
 
-                page.commands.handleMinusQuantity();
+                handleMinusQuantity();
 
-                page.commands.handleChangeQuantity();
+                handleChangeQuantity();
 
-                AppBase.IziToast.showSuccessAlert('Cập nhật số lượng sản phẩm trong giỏ hàng thành công')
+                // AppBase.IziToast.showSuccessAlert('Cập nhật số lượng sản phẩm trong giỏ hàng thành công')
             })
             .catch(() => {
-                AppBase.IziToast.showErrorAlert('Cập nhật số lượng sản phẩm trong giỏ hàng thất bại');
+                // AppBase.IziToast.showErrorAlert('Cập nhật số lượng sản phẩm trong giỏ hàng thất bại');
             });
     })
 }
@@ -99,29 +111,29 @@ handleMinusQuantity = () => {
             quantity: 1
         }
 
-        page.commands.minusCartItem(obj)
+        minusCartItem(obj)
             .then((data) => {
                 let items = data.items;
 
                 $('#cart-view-line').empty();
 
                 $.each(items, (index, item) => {
-                    let str = AppBase.renderCartItem(item);
+                    let str = renderCartItem(item);
                     $('#cart-view-line').append(str);
                 })
 
                 $('#total-view-cart').text(data.totalAmount + ' đ');
 
-                page.commands.handleAddQuantity();
+                handleAddQuantity();
 
-                page.commands.handleMinusQuantity();
+                handleMinusQuantity();
 
-                page.commands.handleChangeQuantity();
+                handleChangeQuantity();
 
-                AppBase.IziToast.showSuccessAlert('Cập nhật số lượng sản phẩm trong giỏ hàng thành công')
+                // AppBase.IziToast.showSuccessAlert('Cập nhật số lượng sản phẩm trong giỏ hàng thành công')
             })
             .catch(() => {
-                AppBase.IziToast.showErrorAlert('Cập nhật số lượng sản phẩm trong giỏ hàng thất bại');
+                // AppBase.IziToast.showErrorAlert('Cập nhật số lượng sản phẩm trong giỏ hàng thất bại');
             });
     })
 }
@@ -193,34 +205,32 @@ handleChangeQuantity = () => {
                     AppBase.IziToast.showErrorAlert('Cập nhật số lượng sản phẩm trong giỏ hàng thất bại');
                 });
         }
-
-
     })
 }
 
 handleAddCart = () => {
     $('.add-cart').on('click', function () {
-        let productId = $(this).data("id");
+        let foodId = $(this).val();
 
         let obj = {
-            productId,
-            quantity: 1
+            foodId
+            // quantity: 1
         }
 
-        // page.commands.addCartItem(obj)
-        //     .then(() => {
-        //         AppBase.IziToast.showSuccessAlert('Thêm sản phẩm vào giỏ hàng thành công')
-        //     })
-        //     .catch(() => {
-        //         AppBase.IziToast.showErrorAlert('Thêm sản phẩm vào giỏ hàng thất bại');
-        //     });
+        addCartItem(obj)
+            .then(() => {
+                alert('Thêm sản phẩm vào giỏ hàng thành công')
+            })
+            .catch(() => {
+                alert('Thêm sản phẩm vào giỏ hàng thất bại');
+            });
 
     })
 }
 
-window.onload = async () => {
-    await getAllCartItems();
-
-
-}
+// window.onload = async () => {
+//     // await getAllCartItems();
+//
+//
+// }
 
